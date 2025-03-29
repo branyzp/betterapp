@@ -6,6 +6,8 @@
 	<div class="container mx-auto flex justify-between">
 		<a href="/">Home.</a>
 		<a href="/about">About.</a>
+		<a href="/bmrcalculator">BMR Calculator.</a>
+		<a href="/routines">Workout Routines.</a>
 	</div>
 </nav>
 

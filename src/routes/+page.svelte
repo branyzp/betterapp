@@ -7,9 +7,6 @@ import { goto } from '$app/navigation';
 		<h1 class="text-4xl">
 			Welcome to Better.
 		</h1>
-<!--		<p class="mt-4 text-lg text-gray-600">-->
-<!--			Let's get started.-->
-<!--		</p>-->
 		<button
 			class="mt-4 bg-gray-800 text-white px-6 py-3 rounded-lg shadow hover:bg-gray-600 transition"
 			on:click={() => goto('/about')}

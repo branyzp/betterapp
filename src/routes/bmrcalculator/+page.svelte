@@ -1,8 +1,11 @@
 <script>
+	// Imports
+	import WeightChart from "./weightchart.svelte"
+
 	// Form Data
-	let age = "30";
-	let height = "175";
-	let weight = "70";
+	let age = 30;
+	let height = 175;
+	let weight = 70;
 	let gender = "male";
 	let activity = "sedentary";
 	let goal = "maintain weight"
@@ -10,11 +13,21 @@
 	let tdee = null;
 	let goalkcal = null;
 	let bmr = null;
+	let weightprogress = 0;
+
+	// Weight Data
+	let now = new Date();
+	let day = now.getDate();
+	let month = now.toLocaleString('default', {month: 'long'});
+
+	let weightData = [
+		{date: `${day} ${month}`, weight: weight }
+	]
 
 	function calculateBMR() {
-		let h = parseFloat(height);
-		let w = parseFloat(weight);
-		let a = parseFloat(age);
+		let h = height
+		let w = weight
+		let a = age
 
 		if ((isNaN(h) || isNaN(w)) || isNaN(a)) {
 			bmr = "Please enter valid numbers for height/weight/age."
@@ -52,6 +65,27 @@
 				action = "surplus of 500kcal";
 				break;
 		}
+
+		for (let i = 1; i < 7; i++) {
+			if (i===1) {
+				// Reset chart
+				now = new Date();
+				day = now.getDate();
+				month = now.toLocaleString('default', {month: 'long'});
+
+				weightData = [
+					{date: `${day} ${month}`, weight: weight }
+				]
+			}
+			if (goal == "lose fat") {
+				weightprogress = -2 * i;
+			} else if (goal == "gain muscle") {
+				weightprogress = 2 * i;
+			}
+			month = now.setMonth(now.getMonth() + i).toLocaleString('default');
+			weightData.push({ date: `${day} ${month}`, weight: weight + weightprogress });
+		}
+		console.log(weightData);
 	}
 </script>
 
@@ -125,6 +159,12 @@
 					<p class="text-md">as your activity level is <span class="text-green-800">{activity}</span>, your total daily energy expenditure is <span class="text-green-800">{tdee.toFixed(0)}</span> kcal/day</p>
 					<p class="text-md">to <span class="text-green-800">{goal}</span>, aim for caloric {action} for a goal of <span class="text-green-800">{goalkcal.toFixed(0)}</span> kcal/day </p>
 				</div>
+
+				{#if goal !== "maintain weight"}
+					<div class="container mx-auto p-4">
+						<WeightChart {weightData} />
+					</div>
+				{/if}
 			{/if}
 		</div>
 </div>
