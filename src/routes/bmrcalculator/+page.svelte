@@ -66,25 +66,32 @@
 				break;
 		}
 
+		let newWeightData = [
+			{ date: `${day} ${month}`, weight: weight }
+		];
+
+
 		for (let i = 1; i < 7; i++) {
 			if (i===1) {
 				// Reset chart
 				now = new Date();
 				day = now.getDate();
-				month = now.toLocaleString('default', {month: 'long'});
+				month = now.toLocaleString('default', { month: 'long' });
 
-				weightData = [
-					{date: `${day} ${month}`, weight: weight }
-				]
+				// Re-initialize the weightData array with the current day
+				newWeightData = [
+					{ date: `${day} ${month}`, weight: weight }
+				];
 			}
 			if (goal == "lose fat") {
 				weightprogress = -2 * i;
 			} else if (goal == "gain muscle") {
 				weightprogress = 2 * i;
 			}
-			month = now.setMonth(now.getMonth() + i).toLocaleString('default');
-			weightData.push({ date: `${day} ${month}`, weight: weight + weightprogress });
+			month = new Date(now.setMonth(now.getMonth() + i)).toLocaleString('default', { month: 'long' });
+			newWeightData.push({ date: `${day} ${month}`, weight: weight + weightprogress });
 		}
+		weightData = [...newWeightData];
 		console.log(weightData);
 	}
 </script>
