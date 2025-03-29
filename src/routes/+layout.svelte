@@ -16,5 +16,5 @@
 </main>
 
 <footer class="bg-gray-800 text-white p-4 text-center">
-	© 2025 Better.app
+	© 2025 Better.app - All rights reserved.
 </footer>
