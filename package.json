@@ -60,6 +60,10 @@
 		"svelte"
 	],
 	"dependencies": {
-		"chart.js": "^4.4.8"
+		"@threlte/core": "^8.0.1",
+		"@threlte/extras": "^9.1.0",
+		"chart.js": "^4.4.8",
+		"three": "^0.175.0",
+		"troika-three-text": "^0.52.3"
 	}
 }

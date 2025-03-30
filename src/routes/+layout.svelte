@@ -7,7 +7,9 @@
 		<a href="/">Home.</a>
 		<a href="/about">About.</a>
 		<a href="/bmrcalculator">BMR Calculator.</a>
+		<a href="/nutrition">Nutrition.</a>
 		<a href="/routines">Workout Routines.</a>
+		<a href="/FAQs">FAQs.</a>
 	</div>
 </nav>
 

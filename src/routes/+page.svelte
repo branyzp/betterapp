@@ -8,11 +8,12 @@ import { goto } from '$app/navigation';
 			Welcome to Better.
 		</h1>
 		<button
-			class="mt-4 bg-gray-800 text-white px-6 py-3 rounded-lg shadow hover:bg-gray-600 transition"
+			class="mt-6 bg-gray-800 text-white px-6 py-3 rounded-lg shadow hover:bg-gray-600 transition"
 			on:click={() => goto('/about')}
 		>
 			Start here.
 		</button>
+
 
 	</div>
 </div>
